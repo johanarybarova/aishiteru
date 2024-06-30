@@ -3,6 +3,7 @@
 ![Aishiteru Logo](public/aishiteru-cover.png)
 
 ![Aishiteru chat light](public/screen-light.png)
+![Aishiteru chat light](public/screen-dark.png)
 
 Aishiteru is a fun app that explores the new experimental feature of Chrome, the `window.ai` API.
 
