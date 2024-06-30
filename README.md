@@ -1,36 +1,56 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Aishiteru
 
-## Getting Started
+![Aishiteru Logo](public/aishiteru-cover.png)
 
-First, run the development server:
+![Aishiteru chat light](public/screen-light.png)
+![Aishiteru chat dark](public/screen-dark.png)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Aishiteru is a fun app that explores the new experimental feature of Chrome, the `window.ai` API.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Overview of the `window.ai` API
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The new API introduces six new functions:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+1. **The `window.ai` object**:
+    - `canCreateGenericSession` and `canCreateTextSession`: These functions check if you have everything needed to use these features. If the result is 'ready', then you're good to go.
+    - `createGenericSession` and `createTextSession`: These functions are used to create sessions, from which you can use the model.
+    - `defaultGenericSessionOptions` and `defaultTextSessionOptions`: These functions return the default options arguments for the `createGenericSession` and `createTextSession` functions.
 
-## Learn More
+## How to Get It?
 
-To learn more about Next.js, take a look at the following resources:
+The API is currently available only on the latest build of Chrome Canary. You can use Chrome for developers [here](https://www.google.com/chrome/dev/). Additionally, it's hidden behind a few internal Chrome flags.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Steps to Enable
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+1. **Enable the "Prompt API for Gemini Nano" flag**:
+    - You can find this flag here: `chrome://flags/#prompt-api-for-gemini-nano`
+    - Enable the flag.
 
-## Deploy on Vercel
+2. **Turn on the "Enable optimization guide on device" flag**:
+    - This flag is located at `chrome://flags/#optimization-guide-on-device-model`
+    - Make sure to choose "Enabled BypassPerfRequirement".
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+3. **Install the Chrome component**:
+    - Go to `chrome://components/` and install the "Optimization Guide On Device Model" Chrome component by clicking the "Check for update" button.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Running the Project
+
+After setting up your browser, you can run this project using Yarn.
+
+### Prerequisites
+
+- Make sure you have the correct versions of Yarn and Node.js:
+    - Node.js: v20.10.0
+    - Yarn: 1.22.19
+
+### Installation
+
+1. Install the node modules:
+    ```bash
+    yarn install
+    ```
+
+2. Run the server:
+    ```bash
+    yarn dev
+    ```
