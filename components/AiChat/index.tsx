@@ -1,13 +1,14 @@
 'use client'
 
 import { Arrow } from '@/components/icons/Arrow'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, useTransition } from 'react'
 import { ChatIcon } from '../icons/ChatIcon'
 import { UserIcon } from '../icons/UserIcon'
 
 const AiChat = () => {
   const [input, setInput] = useState<string>('')
   const [conversation, setConversation] = useState<{ question: string; answer: string }[]>([])
+  const [isPending, startTransition] = useTransition()
 
   const chatEndRef = useRef<HTMLDivElement>(null)
 
@@ -19,17 +20,43 @@ const AiChat = () => {
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault()
-    try {
-      // @ts-expect-error - window.ai is the new experimental chrome API
-      const chatSession = await window.ai.createTextSession()
+    setConversation(prev => [...prev, { question: input, answer: '...' }])
 
-      const response = await chatSession.prompt(input)
+    startTransition(async () => {
+      const abort = new AbortController()
+      try {
+        // @ts-expect-error - window.ai is the new experimental chrome API
+        const chatSession = await window.ai.createTextSession()
 
-      setConversation(prev => [...prev, { question: input, answer: response }])
-      setInput('')
-    } catch (error) {
-      console.error(error)
-    }
+        const response = await chatSession.prompt(input)
+
+        setConversation(prev => {
+          const newConversation = prev.slice()
+          newConversation[newConversation.length - 1] = {
+            question: input,
+            answer:
+              response === ''
+                ? "I'm sorry, but I don't have an answer for that. Please try again."
+                : response,
+          }
+
+          return newConversation
+        })
+      } catch (error) {
+        abort.abort()
+        setConversation(prev => {
+          const newConversation = prev.slice()
+          newConversation[newConversation.length - 1] = {
+            question: input,
+            answer: "I'm sorry, I couldn't understand that. Please try again.",
+          }
+
+          return newConversation
+        })
+      } finally {
+        setInput('')
+      }
+    })
   }
 
   return (
@@ -59,9 +86,11 @@ const AiChat = () => {
             onChange={e => setInput(e.target.value)}
             placeholder='Type your question here...'
             className='py-2 px-10 border rounded-full w-full h-16'
+            disabled={isPending}
           />
           <button
             type='submit'
+            disabled={isPending}
             className='text-white rounded-full flex items-center justify-center'
           >
             <Arrow />
