@@ -2,49 +2,49 @@ import { SVGProps } from 'react'
 
 export const Arrow: React.FC<SVGProps<SVGSVGElement>> = props => (
   <svg
-    width='65'
-    height='65'
-    viewBox='0 0 65 65'
-    fill='none'
     xmlns='http://www.w3.org/2000/svg'
+    width='64'
+    height='64'
+    fill='none'
+    viewBox='0 0 64 64'
     {...props}
   >
     <circle
-      cx='32.2549'
-      cy='32.2549'
+      cx='32'
+      cy='32'
       r='30'
-      transform='rotate(90 32.2549 32.2549)'
-      stroke='url(#paint0_linear_3077_152)'
+      stroke='url(#paint0_linear_20816_33)'
       strokeWidth='4'
+      transform='rotate(90 32 32)'
     />
     <path
+      fill='url(#paint1_linear_20816_33)'
       fillRule='evenodd'
+      d='m33.16 18.33-1.41-1.41-1.42 1.41-14 14 2.83 2.83 10.59-10.59v24.18h4V24.57l10.58 10.59 2.83-2.83-14-14Z'
       clipRule='evenodd'
-      d='M33.4144 18.5856L32.0002 17.1714L30.5859 18.5856L16.5859 32.5856L19.4144 35.414L30.0002 24.8282L30.0002 48.9998H34.0001L34.0002 24.8282L44.5859 35.414L47.4144 32.5856L33.4144 18.5856Z'
-      fill='url(#paint1_linear_3077_152)'
     />
     <defs>
       <linearGradient
-        id='paint0_linear_3077_152'
-        x1='57'
-        y1='66.0098'
-        x2='6.5'
-        y2='3.50977'
+        id='paint0_linear_20816_33'
+        x1='33.5'
+        x2='6.25'
+        y1='45'
+        y2='3.25'
         gradientUnits='userSpaceOnUse'
       >
         <stop stopColor='#8044FF' />
         <stop offset='1' stopColor='#D479FF' />
       </linearGradient>
       <linearGradient
-        id='paint1_linear_3077_152'
-        x1='14.3839'
-        y1='85.3752'
-        x2='72.7596'
-        y2='49.5318'
+        id='paint1_linear_20816_33'
+        x1='14.13'
+        x2='72.5'
+        y1='85.12'
+        y2='49.28'
         gradientUnits='userSpaceOnUse'
       >
         <stop stopColor='#8044FF' />
-        <stop offset='0.97061' stopColor='#D479FF' />
+        <stop offset='.97' stopColor='#D479FF' />
       </linearGradient>
     </defs>
   </svg>

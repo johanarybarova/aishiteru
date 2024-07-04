@@ -20,6 +20,11 @@ const AiChat = () => {
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault()
+
+    if (!input.trim()) {
+      return
+    }
+
     setConversation(prev => [...prev, { question: input, answer: '...' }])
 
     startTransition(async () => {
@@ -36,7 +41,7 @@ const AiChat = () => {
             question: input,
             answer:
               response === ''
-                ? "I'm sorry, but I don't have an answer for that. Please try again."
+                ? 'I am sorry, I do not understand what you mean. Please try again.'
                 : response,
           }
 
@@ -79,13 +84,14 @@ const AiChat = () => {
       <section className='fixed bottom-0 w-full bg-background'>
         <form
           onSubmit={handleSubmit}
-          className='px-4 md:px-14 mx-auto max-w-6xl mb-4 pt-1 flex flex-row h-fit gap-4 justify-end items-en w-full'
+          className='px-4 md:px-14 mx-auto max-w-6xl mb-4 pt-1 lex-row h-fit gap-4 items-en w-full flex justify-center items-center'
         >
-          <textarea
+          <input
+            type='text'
             value={input}
             onChange={e => setInput(e.target.value)}
             placeholder='Type your question here...'
-            className='py-2 px-10 border rounded-full w-full h-16'
+            className='py-2 px-10 border rounded-full w-full h-14'
             disabled={isPending}
           />
           <button

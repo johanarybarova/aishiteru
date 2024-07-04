@@ -47,7 +47,7 @@ button {
   font-size: 1rem;
 }
 
-textarea {
+input {
   &:focus {
     outline: 4px solid var(--secondary); 
     outline-offset: 1px; 
