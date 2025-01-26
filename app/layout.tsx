@@ -14,12 +14,12 @@ export const metadata: Metadata = {
   description: 'Testing the new window.ai Chrome API',
 }
 
-const rootLayout = ({
+const rootLayout = async ({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) => {
-  const cookieStore = cookies()
+  const cookieStore = await cookies()
   const defaultTheme = cookieStore.get('theme')?.value || THEME.LIGHT
 
   return (
