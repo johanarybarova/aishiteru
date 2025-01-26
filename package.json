@@ -10,12 +10,12 @@
     "lint:fix": "npm run lint --fix"
   },
   "dependencies": {
-    "next": "14.2.4",
+    "next": "^15.1.6",
     "next-themes": "^0.3.0",
     "nookies": "^2.5.2",
     "prettier": "^3.3.2",
-    "react": "^18",
-    "react-dom": "^18",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
     "sass": "^1.77.6",
     "typescript-eslint": "^7.14.1"
   },
