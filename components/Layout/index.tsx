@@ -4,8 +4,8 @@ import { Header } from './Header'
 import { THEME } from '../../utils/constants'
 import { ReactNode } from 'react'
 
-export const Layout = ({ children }: { children: ReactNode }) => {
-  const cookieStore = cookies()
+export const Layout = async ({ children }: { children: ReactNode }) => {
+  const cookieStore = await cookies()
   const defaultTheme = cookieStore.get('theme')?.value || THEME.LIGHT
 
   return (
