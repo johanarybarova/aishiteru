@@ -37,7 +37,7 @@ The API is currently available only on the latest build of Chrome Canary. You ca
 
 After setting up your browser, you can run this project using Yarn.
 
-### Prerequisites
+### Prerequisites for Aishiteru
 
 - Make sure you have the correct versions of Yarn and Node.js:
     - Node.js: v20.10.0
