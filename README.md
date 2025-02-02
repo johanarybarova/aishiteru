@@ -1,4 +1,4 @@
-# Aishiteru
+# Aishiteru chat
 
 ![Aishiteru Logo](public/aishiteru-cover.png)
 
